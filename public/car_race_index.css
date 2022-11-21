@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Moon+Dance&family=Shizuru&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Moon Dance', cursive;
+    font-family: 'Shizuru', cursive;
+     overflow: hidden;
+    background-image: url("./grass2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main {
+    display: flex;
+}
+
+.road-single-player{
+   
+    left: 35% !important;
+}
+
+#road {
+    width: 400px;
+    height: 100%;
+    /* background-color: #444444; */
+    background-image: url(./road.jpg);
+    margin:auto;
+    border: 4px solid white;
+    border-top-style: none;
+    border-bottom-style: none;   
+    /* position: relative; */
+    position: fixed;
+    left: 15%;
+    
+}
+@media screen and (max-width:1000px) {
+    #road {
+        
+        height: 100%;
+
+    }
+}
+
+#road2 {
+    width: 400px;
+    height: 100vh;
+    /* background-color: #444444; */
+    background-image: url(./road.jpg);
+    margin:auto;
+    border: 4px solid white;
+    border-top-style: none;
+    border-bottom-style: none;   
+    /* position: relative; */
+    position: fixed;
+    left: 50%;
+    
+}
+
+.div{
+    display: flex;
+    justify-content: space-around;
+}
+
+.userCar {
+    width: 40px;
+    height: 80px;
+    /* margin-left: 80px; */
+    background-image: url(./red.png);
+    /* background-color: black; */
+    background-size:cover;
+    position: absolute;
+    bottom: 40px;
+    z-index: 999;
+}   
+
+.traffic {
+    width: 40px;
+    height: 80px;
+    background-size:cover;
+    position: absolute;
+    /* z-index: 999; */
+}   
+#centerRoadLine{
+    width: 10px;
+    height: 100px;
+    margin-left: 198px;
+    background-color: white;
+    position: absolute;
+}
+
+.startLine{
+    width: 300px;
+    height: 100px;
+    background-image: url(start.png);
+    background-size: cover;
+
+    background-color: white;
+    margin: 100px auto auto 50px;
+    position: absolute;
+}
+
+.startLineCar{
+    width: 40px;
+    height: 80px;
+    background-size:cover;
+    position: absolute;
+}
+
+
+
+
+.score_item {
+    font-size:50px;
+    text-align:center;
+    
+  } 
+
+  /*start Game  */
+ #newgame , #gameover,#restartgame {
+      width: 300px;
+      height: auto;
+      background-color: black;
+      z-index: 999;
+      margin: auto;
+      margin-left: 39%;
+      margin-top: 23%;
+      color: aliceblue;
+      /* font-weight: 90px//; */
+      font-size:60px;
+      border-radius: 20px 20px;
+      text-align: center;
+    position: fixed;
+    text-decoration: none;
+      
+  }
+  #lifecountdiv {
+      position: fixed;
+      right: 0;
+      top: 0;
+  }                
+
+
+  #newgame:hover,#gameover:hover {
+      transform: scale(1.5);}
+
+
+  /*  ========================landing page */
+
+  #heading {
+        width: 40%;
+        height: auto;
+        margin: 0 auto;
+  }
+  #heading h1 {
+      font-weight: 400px;
+      font-size: 90px;
+      text-align: center;
+      /* color: yellow; */
+
+  }
+  .landingpageitem {
+      width: 40%;
+      height: auto;
+      margin:auto;
+      text-align: center;
+      margin-top: 30px;
+  }
+  .itemheading {
+      font-size: 40px;
+      cursor: pointer;
+  }
+  .itemheading:hover {
+    transform: scale(1.2);
+}
+/* startcount ===============*/
+
+#startcount {
+    font-size:50px;
+    text-align:center;
+    position: fixed;
+    right: 48%;
+    bottom: 40%;
+    color: aliceblue;
+    background-color: black;
+    z-index: 999;
+    
+
+}
+
+/* #score_life {
+    display: flex;
+    justify-content:space-evenly;
+} */
+
+/* #spacekey {
+    width: 100px;
+    height: auto;
+    background-color: black;
+    z-index: 999;
+    margin: auto;
+    margin-left: 39%;
+    margin-top: 23%;
+    color: aliceblue;
+    font-size:40px;
+    border-radius: 20px 20px;
+    text-align: center;
+  position: fixed;
+} */

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./leaderboard.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Leader Board</title>
+</head>
+
+<body>
+    <div class="container"><br>
+        <div class="row">
+            <center>
+                <div class="col-md-6 glasseffect">
+                    <h1 class="mb-1" id="heading">Leader Board</h1>
+                    <br>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">sno</th>
+                                <th scope="col">nickName</th>
+                                <th scope="col"> Score </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </center>
+
+        </div>
+
+
+
+        <div class="row">
+            <center>
+                <div class="col-sm-3">
+                    <a href="./single_double_player.html "><button type="button"
+                            class="btn btn-secondary">PlayGame</button></a>
+
+                </div>
+            </center>
+
+
+        </div>
+
+    </div>
+
+
+
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyBiKRMelrn6xgkCNzvnzWs_pccXa7-sIHA",
+        authDomain: "road-race-25ac8.firebaseapp.com",
+        projectId: "road-race-25ac8",
+        storageBucket: "road-race-25ac8.appspot.com",
+        messagingSenderId: "278793487439",
+        appId: "1:278793487439:web:43ee0f1332d2427a48563a",
+        measurementId: "G-YT1865R5HR"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // const analytics = getAnalytics(app);
+
+
+    import { getDatabase, set, ref, child, get, onValue }
+        from "https://www.gstatic.com/firebasejs/9.6.6/firebase-database.js";
+
+    const db = getDatabase();
+    let scoreArray = [];
+
+     
+    let currentUserNickName = localStorage.getItem('Name');
+    fetchScore();
+
+    function fetchScore() {
+        const initialDataRef = ref(db, 'SingleScoreList');
+        onValue(initialDataRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(snapshot.val())
+            scoreArray = Object.values(data)
+         
+            console.table(scoreArray);
+            scoreArray.sort(compareScores);
+            console.table(scoreArray);
+
+            let sno = 1;
+
+            let tbody = document.querySelector('tbody');
+            scoreArray.forEach((child) => {
+
+                if (sno <= 10) {
+                    let tr = document.createElement('tr');
+                    let tdSno = document.createElement('td');
+                    let tdnick = document.createElement('td');
+                    let tdscore = document.createElement('td');
+
+                    tdSno.innerHTML = sno;
+                    tdnick.innerHTML = child.nickName;
+                    tdscore.innerHTML = child.score;
+
+                    tr.appendChild(tdSno);
+                    tr.appendChild(tdnick);
+                    tr.appendChild(tdscore);
+
+                    tbody.appendChild(tr)
+
+                    sno++;
+                }
+
+            });
+
+
+        });
+
+
+    }
+
+    function compareScores(a, b) {
+        const score1 = a.score;
+        const score2 = b.score;
+        let comparison = 0;
+
+        if (score1 < score2) {
+            comparison = 1;
+        } else if (score1 > score2) {
+            comparison = -1;
+        }
+        return comparison;
+    }
+</script>
+
+
+</html>
